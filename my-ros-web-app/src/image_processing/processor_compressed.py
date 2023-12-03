@@ -11,6 +11,7 @@ import numpy as np
 def image_callback(msg):
     global cv_img
     cv_img = CvBridge().imgmsg_to_cv2(msg, desired_encoding="passthrough")
+    cv_img = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
     cuda_img = cudaFromNumpy(cv_img)
 
     # classify the image
